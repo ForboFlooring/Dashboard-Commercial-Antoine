@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<h1>🚨 VERSION TEST 999 🚨</h1>
-    
+<title>Dashboard Antoine</title>
+
 <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 
 <style>
@@ -49,7 +49,7 @@ pre{
 
 <body>
 
-<h1>📊 Dashboard Commercial Antoine</h1>
+<h1>🚨 VERSION TEST 999 🚨</h1>
 
 <button onclick="testExcel()">
 Lire Excel
@@ -77,22 +77,27 @@ async function testExcel(){
             await response.arrayBuffer();
 
         const workbook =
-    XLSX.read(data);
+            XLSX.read(data);
 
-const sheet =
-    workbook.Sheets["Clients AAJ"];
+        const sheet =
+            workbook.Sheets["Clients AAJ"];
 
-if(!sheet){
-    throw new Error(
-        "Onglet 'Clients AAJ' introuvable"
-    );
-}
+        if(!sheet){
+            throw new Error(
+                "Onglet Clients AAJ introuvable"
+            );
+        }
 
-const rows =
-    XLSX.utils.sheet_to_json(
-        sheet,
-        {header:1}
-    );
+        const rows =
+            XLSX.utils.sheet_to_json(
+                sheet,
+                {header:1}
+            );
+
+        alert(
+            "Nb lignes trouvées : " +
+            rows.length
+        );
 
         console.table(rows);
 
