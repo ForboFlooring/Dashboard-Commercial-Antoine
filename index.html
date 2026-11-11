@@ -46,7 +46,11 @@ console.table(rows);
 document.getElementById(
     "result"
 ).textContent =
-workbook.SheetNames.join("\n");
+JSON.stringify(
+    rows.slice(0,10),
+    null,
+    2
+)
 
     }
 
