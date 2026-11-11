@@ -77,19 +77,22 @@ async function testExcel(){
             await response.arrayBuffer();
 
         const workbook =
-            XLSX.read(data);
+    XLSX.read(data);
 
-        if(!sheet){
-            throw new Error(
-                "Onglet 'Clients AAJ' introuvable"
-            );
-        }
+const sheet =
+    workbook.Sheets["Clients AAJ"];
 
-        const rows =
-            XLSX.utils.sheet_to_json(
-                sheet,
-                {header:1}
-            );
+if(!sheet){
+    throw new Error(
+        "Onglet 'Clients AAJ' introuvable"
+    );
+}
+
+const rows =
+    XLSX.utils.sheet_to_json(
+        sheet,
+        {header:1}
+    );
 
         console.table(rows);
 
