@@ -79,9 +79,6 @@ async function testExcel(){
         const workbook =
             XLSX.read(data);
 
-        const sheet =
-            workbook.Sheets["Clients AAJ"];
-
         if(!sheet){
             throw new Error(
                 "Onglet 'Clients AAJ' introuvable"
