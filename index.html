@@ -2,13 +2,55 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Dashboard Commercial Antoine</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Antoine</title>
+
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 </head>
 <body>
 
 <h1>Dashboard Commercial Antoine</h1>
 
-<p>Le site fonctionne ✅</p>
+<button onclick="testExcel()">
+Lire Excel
+</button>
+
+<pre id="result"></pre>
+
+<script>
+
+async function testExcel(){
+
+    try{
+
+        const response =
+            await fetch("data.xlsx");
+
+        const data =
+            await response.arrayBuffer();
+
+        const workbook =
+            XLSX.read(data);
+
+        document.getElementById(
+            "result"
+        ).textContent =
+        workbook.SheetNames.join("\n");
+
+    }
+
+    catch(error){
+
+        document.getElementById(
+            "result"
+        ).textContent =
+        error;
+
+    }
+
+}
+
+</script>
 
 </body>
 </html>
