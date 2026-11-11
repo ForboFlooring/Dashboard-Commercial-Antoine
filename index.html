@@ -29,13 +29,24 @@ async function testExcel(){
         const data =
             await response.arrayBuffer();
 
-        const workbook =
-            XLSX.read(data);
+     const workbook =
+XLSX.read(data);
 
-        document.getElementById(
-            "result"
-        ).textContent =
-        workbook.SheetNames.join("\n");
+const sheet =
+workbook.Sheets["Clients AAJ"];
+
+const rows =
+XLSX.utils.sheet_to_json(
+    sheet,
+    {header:1}
+);
+
+console.table(rows);
+
+document.getElementById(
+    "result"
+).textContent =
+workbook.SheetNames.join("\n");
 
     }
 
